@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">مترجم إشارة المناهج التعليمية</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <!-- Add dark mode config to Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+
+        tailwind.config = {
+            darkMode: 'class'
+
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.min.css">
+</head>
+
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+    <nav class="bg-blue-900 dark:bg-blue-950 text-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-hands-asl-interpreting text-4xl md:text-3xl text-white"></i>
+                    <span class="font-extrabold text-3xl md:text-3xl tracking-wide"
+                        style="font-family:'Cairo', 'Tajawal', sans-serif;">EduSign</span>
+                </div>
+                <div class="hidden md:flex space-x-2 space-x-reverse items-center">
+                    <a href="#home" class="px-3 py-2 rounded hover:bg-blue-800" id="navHome">الرئيسية</a>
+                    <a href="#features" class="px-3 py-2 rounded hover:bg-blue-800" id="navFeatures">المميزات</a>
+                    <a href="#methodology" class="px-3 py-2 rounded hover:bg-blue-800" id="navMethodology">المنهجية</a>
+                    <a href="#contact" class="px-3 py-2 rounded hover:bg-blue-800" id="navContact">اتصل بنا</a>
+
+                    <!-- Dark Mode Toggle Button -->
+                    <button id="darkModeToggle" class="px-3 py-2 rounded hover:bg-blue-800 focus:outline-none">
+                        <i class="fas fa-moon text-xl" id="darkModeIcon"></i>
+                    </button>
+
+                    <!-- Language Toggle Button -->
+                    <button id="languageToggle" class="px-3 py-2 rounded hover:bg-blue-800 focus:outline-none">
+                        <i class="fas fa-globe text-xl"></i>
+                        <span id="currentLangDisplay">EN</span>
+                    </button>
+                </div>
+                <button class="md:hidden text-white focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- قسم الهيرو -->
+    <section id="home" class="relative h-screen flex items-center justify-center">
+        <img src="img/WhatsApp Image 2025-08-11 at 11.44.03_11afb7e6.jpg"
+            alt="معلمة تقوم بترجمة منهج علمي بلغة الإشارة داخل فصل دراسي حديث مع طلاب من ذوي الإعاقة السمعية"
+            class="absolute inset-0 w-full h-full object-cover" onerror="this.style.backgroundColor='#1E3A8A'">
+        <div class="hero-overlay absolute inset-0 w-full h-full bg-black opacity-50 dark:opacity-70"></div>
+        <div class="container mx-auto px-6 z-10 text-white text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6" id="heroTitle">ترجمة المناهج الدراسية بلغة الإشارة</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto" id="heroSubtitle">نقدم حلولاً شاملة لترجمة المناهج التعليمية بلغة
+                الإشارة بجودة عالية ودقة علمية</p>
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <button
+                    class="bg-white text-blue-900 font-bold py-3 px-8 rounded-full hover:bg-gray-100 transition duration-300 dark:bg-blue-700 dark:text-white dark:hover:bg-blue-600"
+                    id="heroButton1">
+                    تجربة النظام
+                </button>
+                <button
+                    class="border-2 border-white text-white font-bold py-3 px-8 rounded-full hover:bg-white hover:text-blue-900 transition duration-300 dark:hover:bg-blue-700 dark:hover:text-white"
+                    id="heroButton2">
+                    تعرف أكثر
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- إحصائيات -->
+    <section class="bg-white dark:bg-gray-800 py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="p-6">
+                    <h3 class="text-4xl font-bold text-blue-900 dark:text-blue-400 mb-2" id="stat1Num">+350</h3>
+                    <p class="text-gray-600 dark:text-gray-300" id="stat1Text">درس مكتوب تمت ترجمته</p>
+                </div>
+                <div class="p-6 border-r-2 border-l-2 border-gray-200 dark:border-gray-700">
+                    <h3 class="text-4xl font-bold text-blue-900 dark:text-blue-400 mb-2" id="stat2Num">+120</h3>
+                    <p class="text-gray-600 dark:text-gray-300" id="stat2Text">مدرس لغة إشارة معتمد</p>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-4xl font-bold text-blue-900 dark:text-blue-400 mb-2" id="stat3Num">98%</h3>
+                    <p class="text-gray-600 dark:text-gray-300" id="stat3Text">رضا أولياء الأمور</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- مميزات النظام -->
+    <section id="features" class="py-20 bg-gray-50 dark:bg-gray-900">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-blue-900 dark:text-blue-400 mb-16" id="featuresTitle">مميزات منصتنا</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- بطاقة الميزة 1 -->
+                <div class="feature-card bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md transition duration-300">
+                    <div class="w-16 h-16 bg-blue-100 dark:bg-blue-800 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-book text-blue-900 dark:text-blue-200 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-gray-900 dark:text-gray-100" id="feature1Title">مناهج تعليمية متكاملة</h3>
+                    <p class="text-gray-600 dark:text-gray-300" id="feature1Desc">ترجمة شاملة لجميع المناهج الدراسية المقررة باحترافية عالية ودقة علمية</p>
+                </div>
+
+                <!-- بطاقة الميزة 2 -->
+                <div class="feature-card bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md transition duration-300">
+                    <div class="w-16 h-16 bg-blue-100 dark:bg-blue-800 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-chalkboard-teacher text-blue-900 dark:text-blue-200 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-gray-900 dark:text-gray-100" id="feature2Title">مترجمون معتمدون</h3>
+                    <p class="text-gray-600 dark:text-gray-300" id="feature2Desc">فريق من المترجمين المؤهلين والمدربين على أعلى المستويات</p>
+                </div>
+
+                <!-- بطاقة الميزة 3 -->
+                <div class="feature-card bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md transition duration-300">
+                    <div class="w-16 h-16 bg-blue-100 dark:bg-blue-800 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-video text-blue-900 dark:text-blue-200 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-gray-900 dark:text-gray-100" id="feature3Title">جودة عالية الفيديو</h3>
+                    <p class="text-gray-600 dark:text-gray-300" id="feature3Desc">إنتاج مرئي بدقة عالية مع إضاءة وتصوير مميزين للحركات اللغوية</p>
+                </div>
+
+                <!-- بطاقة الميزة 4 -->
+                <div class="feature-card bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md transition duration-300">
+                    <div class="w-16 h-16 bg-blue-100 dark:bg-blue-800 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-customize text-blue-900 dark:text-blue-200 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-gray-900 dark:text-gray-100" id="feature4Title">تخصيص المحتوى</h3>
+                    <p class="text-gray-600 dark:text-gray-300" id="feature4Desc">إمكانية طلب ترجمة مواد إضافية حسب احتياجات المدرسة أو الطالب</p>
+                </div>
+
+                <!-- بطاقة الميزة 5 -->
+                <div class="feature-card bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md transition duration-300">
+                    <div class="w-16 h-16 bg-blue-100 dark:bg-blue-800 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-globe text-blue-900 dark:text-blue-200 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-gray-900 dark:text-gray-100" id="feature5Title">منصة إلكترونية متكاملة</h3>
+                    <p class="text-gray-600 dark:text-gray-300" id="feature5Desc">نظام إدارة التعلم يتيح الوصول للمحتوى المترجم في أي وقت ومن أي مكان</p>
+                </div>
+
+                <!-- بطاقة الميزة 6 -->
+                <div class="feature-card bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md transition duration-300">
+                    <div class="w-16 h-16 bg-blue-100 dark:bg-blue-800 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-hands-helping text-blue-900 dark:text-blue-200 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-gray-900 dark:text-gray-100" id="feature6Title">دعم فني مستمر</h3>
+                    <p class="text-gray-600 dark:text-gray-300" id="feature6Desc">فريق دعم فني يعمل على مدار الساعة للإجابة عن الاستفسارات</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- عرض توضيحي -->
+    <section class="py-20 bg-blue-900 dark:bg-blue-950 text-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6" id="demoTitle">شاهد كيف تعمل المنصة</h2>
+                    <p class="text-xl mb-8" id="demoSubtitle">نظام متكامل يقدم تجربة تعليمية غنية بلغة الإشارة للمناهج الدراسية المختلفة
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-400 mt-1 mr-2"></i>
+                            <span id="demoListItem1">اختيار المنهج الدراسي المطلوب</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-400 mt-1 mr-2"></i>
+                            <span id="demoListItem2">تصفح الدروس المترجمة بلغة الإشارة</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-400 mt-1 mr-2"></i>
+                            <span id="demoListItem3">إمكانية إعادة مشاهدة أي جزء من الدرس</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-400 mt-1 mr-2"></i>
+                            <span id="demoListItem4">تمارين تفاعلية لاختبار الفهم</span>
+                        </li>
+                    </ul>
+                    <button
+                        class="mt-8 bg-white text-blue-900 font-bold py-3 px-8 rounded-full hover:bg-gray-100 transition duration-300 dark:bg-blue-700 dark:text-white dark:hover:bg-blue-600"
+                        id="demoButton">
+                        ابدأ التجربة المجانية
+                    </button>
+                </div>
+                <div class="md:w-1/2 mt-8 md:mt-0">
+                    <video class="w-full rounded-xl" controls poster="https://placehold.co/800x500">
+                        <source src="./Video/Sign Language Translator.mp4" type="video/mp4">
+                        <span id="videoNotSupported">المتصفح لا يدعم عرض الفيديو.</span>
+                    </video>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- منهجية العمل -->
+    <section id="methodology" class="py-20 bg-white dark:bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-blue-900 dark:text-blue-400 mb-16" id="methodologyTitle">منهجية الترجمة والتدقيق</h2>
+            <div class="max-w-5xl mx-auto">
+                <div class="relative">
+                    <!-- خط التوقيت -->
+                    <div
+                        class="hidden md:block absolute left-1/2 top-0 h-full w-1 bg-blue-200 dark:bg-blue-700 transform -translate-x-1/2">
+                    </div>
+
+                    <!-- مرحلة 1 -->
+                    <div class="flex flex-col md:flex-row mb-8">
+                        <div class="w-full md:w-1/2 md:pr-24 mb-4 md:mb-0">
+                            <div class="bg-blue-100 dark:bg-blue-800 p-6 rounded-lg shadow-md">
+                                <h3 class="text-xl font-bold text-blue-900 dark:text-blue-200 mb-2" id="method1Title">مرحلة التحليل</h3>
+                                <p class="text-gray-700 dark:text-gray-300" id="method1Desc">تحليل المنهج الدراسي وتحديد المفاهيم الأساسية والمصطلحات
+                                    التقنية</p>
+                            </div>
+                        </div>
+                        <div class="w-full md:w-1/2 flex items-center justify-center md:justify-start">
+                            <div
+                                class="w-16 h-16 rounded-full bg-blue-900 dark:bg-blue-600 flex items-center justify-center text-white font-bold border-4 border-white dark:border-gray-800 shadow-lg">
+                                1</div>
+                        </div>
+                    </div>
+
+                    <!-- مرحلة 2 -->
+                    <div class="flex flex-col md:flex-row-reverse mb-8">
+                        <div class="w-full md:w-1/2 md:pl-24 mb-4 md:mb-0">
+                            <div class="bg-blue-100 dark:bg-blue-800 p-6 rounded-lg shadow-md">
+                                <h3 class="text-xl font-bold text-blue-900 dark:text-blue-200 mb-2" id="method2Title">مرحلة الترجمة الأولية</h3>
+                                <p class="text-gray-700 dark:text-gray-300" id="method2Desc">ترجمة المحتوى إلى لغة الإشارة مع مراعاة الدقة العلمية والتربوية
+                                </p>
+                            </div>
+                        </div>
+                        <div class="w-full md:w-1/2 flex items-center justify-center md:justify-end">
+                            <div
+                                class="w-16 h-16 rounded-full bg-blue-900 dark:bg-blue-600 flex items-center justify-center text-white font-bold border-4 border-white dark:border-gray-800 shadow-lg">
+                                2</div>
+                        </div>
+                    </div>
+
+                    <!-- مرحلة 3 -->
+                    <div class="flex flex-col md:flex-row mb-8">
+                        <div class="w-full md:w-1/2 md:pr-24 mb-4 md:mb-0">
+                            <div class="bg-blue-100 dark:bg-blue-800 p-6 rounded-lg shadow-md">
+                                <h3 class="text-xl font-bold text-blue-900 dark:text-blue-200 mb-2" id="method3Title">مرحلة التدقيق اللغوي</h3>
+                                <p class="text-gray-700 dark:text-gray-300" id="method3Desc">تدقيق الترجمة من قبل متخصصين في لغة الإشارة والمنهج التعليمي
+                                </p>
+                            </div>
+                        </div>
+                        <div class="w-full md:w-1/2 flex items-center justify-center md:justify-start">
+                            <div
+                                class="w-16 h-16 rounded-full bg-blue-900 dark:bg-blue-600 flex items-center justify-center text-white font-bold border-4 border-white dark:border-gray-800 shadow-lg">
+                                3</div>
+                        </div>
+                    </div>
+
+                    <!-- مرحلة 4 -->
+                    <div class="flex flex-col md:flex-row-reverse mb-8">
+                        <div class="w-full md:w-1/2 md:pl-24 mb-4 md:mb-0">
+                            <div class="bg-blue-100 dark:bg-blue-800 p-6 rounded-lg shadow-md">
+                                <h3 class="text-xl font-bold text-blue-900 dark:text-blue-200 mb-2" id="method4Title">مرحلة الإنتاج</h3>
+                                <p class="text-gray-700 dark:text-gray-300" id="method4Desc">تصوير الدروس بجودة عالية في استوديوهات متخصصة</p>
+                            </div>
+                        </div>
+                        <div class="w-full md:w-1/2 flex items-center justify-center md:justify-end">
+                            <div
+                                class="w-16 h-16 rounded-full bg-blue-900 dark:bg-blue-600 flex items-center justify-center text-white font-bold border-4 border-white dark:border-gray-800 shadow-lg">
+                                4</div>
+                        </div>
+                    </div>
+
+                    <!-- مرحلة 5 -->
+                    <div class="flex flex-col md:flex-row">
+                        <div class="w-full md:w-1/2 md:pr-24 mb-4 md:mb-0">
+                            <div class="bg-blue-100 dark:bg-blue-800 p-6 rounded-lg shadow-md">
+                                <h3 class="text-xl font-bold text-blue-900 dark:text-blue-200 mb-2" id="method5Title">مرحلة النشر والتقييم</h3>
+                                <p class="text-gray-700 dark:text-gray-300" id="method5Desc">رفع المحتوى على المنصة وجمع التغذية الراجعة والتحسين المستمر
+                                </p>
+                            </div>
+                        </div>
+                        <div class="w-full md:w-1/2 flex items-center justify-center md:justify-start">
+                            <div
+                                class="w-16 h-16 rounded-full bg-blue-900 dark:bg-blue-600 flex items-center justify-center text-white font-bold border-4 border-white dark:border-gray-800 shadow-lg">
+                                5</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- تواصل معنا -->
+    <section id="contact" class="py-20 bg-blue-900 dark:bg-blue-950 text-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row gap-12">
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6" id="contactTitle">تواصل معنا</h2>
+                    <p class="text-lg mb-8" id="contactSubtitle">نحن هنا لمساعدتك في أي استفسار حول خدمات ترجمة المناهج بلغة الإشارة</p>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 text-blue-300 mr-4"></i>
+                            <div>
+                                <h3 class="font-bold text-lg" id="addressTitle">العنوان</h3>
+                                <p class="text-blue-200" id="addressText">مصر،قنا </p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <i class="fas fa-phone-alt mt-1 text-blue-300 mr-4"></i>
+                            <div>
+                                <h3 class="font-bold text-lg" id="phoneTitle">الهاتف</h3>
+                                <p class="text-blue-200" id="phoneText">+2011111111 </p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <i class="fas fa-envelope mt-1 text-blue-300 mr-4"></i>
+                            <div>
+                                <h3 class="font-bold text-lg" id="emailTitle">البريد الإلكتروني</h3>
+                                <p class="text-blue-200" id="emailText">info@sign-translate.edu</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8">
+                        <h3 class="font-bold text-lg mb-4" id="followUsTitle">تابعنا على</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-white hover:text-blue-300 transition duration-300">
+                                <i class="fab fa-twitter text-2xl"></i>
+                            </a>
+                            <a href="#" class="text-white hover:text-blue-300 transition duration-300">
+                                <i class="fab fa-facebook text-2xl"></i>
+                            </a>
+                            <a href="#" class="text-white hover:text-blue-300 transition duration-300">
+                                <i class="fab fa-instagram text-2xl"></i>
+                            </a>
+                            <a href="#" class="text-white hover:text-blue-300 transition duration-300">
+                                <i class="fab fa-youtube text-2xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md:w-1/2">
+                    <form id="contactForm" class="bg-white dark:bg-gray-800 rounded-lg shadow-xl p-8 text-gray-800 dark:text-gray-100">
+                        <div class="mb-6">
+                            <label for="name" class="block font-bold mb-2" id="formNameLabel">الاسم الكامل</label>
+                            <input type="text" id="name"
+                                class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-gray-100">
+                        </div>
+
+                        <div class="mb-6">
+                            <label for="email" class="block font-bold mb-2" id="formEmailLabel">البريد الإلكتروني</label>
+                            <input type="email" id="email"
+                                class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-gray-100">
+                        </div>
+
+                        <div class="mb-6">
+                            <label for="subject" class="block font-bold mb-2" id="formSubjectLabel">الموضوع</label>
+                            <select id="subject"
+                                class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-500 dark:bg-gray-700 dark:text-gray-100">
+                                <option id="subjectOption1">استفسار عام</option>
+                                <option id="subjectOption2">طلب خدمة ترجمة</option>
+                                <option id="subjectOption3">دعم فني</option>
+                                <option id="subjectOption4">مقترحات</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-6">
+                            <label for="message" class="block font-bold mb-2" id="formMessageLabel">الرسالة</label>
+                            <textarea id="message" rows="5"
+                                class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-gray-100"></textarea>
+                        </div>
+
+                        <button type="submit"
+                            class="w-full bg-blue-900 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-800 transition duration-300 dark:bg-blue-700 dark:hover:bg-blue-600"
+                            id="formSubmitButton">
+                            إرسال الرسالة
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- فوتر -->
+    <footer class="bg-blue-950 dark:bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <i class="fa-solid fa-hands-asl-interpreting text-4xl md:text-3xl text-white"></i>
+                    <span class="font-extrabold text-3xl md:text-3xl tracking-wide"
+                        style="font-family:'Cairo', 'Tajawal', sans-serif;">EduSign</span>
+                    <p class="text-blue-300 dark:text-gray-400" id="footerDesc">منصة رائدة في مجال ترجمة المناهج التعليمية بلغة الإشارة لتوفير تعليم متكافئ
+                        للصم وضعاف السمع</p>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-4" id="footerQuickLinksTitle">روابط سريعة</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-blue-300 dark:text-gray-400 hover:text-white transition duration-300" id="footerLink1">الرئيسية</a></li>
+                        <li><a href="#" class="text-blue-300 dark:text-gray-400 hover:text-white transition duration-300" id="footerLink2">عن المنصة</a>
+                        </li>
+                        <li><a href="#" class="text-blue-300 dark:text-gray-400 hover:text-white transition duration-300" id="footerLink3">الأسعار</a></li>
+                        <li><a href="#" class="text-blue-300 dark:text-gray-400 hover:text-white transition duration-300" id="footerLink4">المدونة</a></li>
+                        <li><a href="#" class="text-blue-300 dark:text-gray-400 hover:text-white transition duration-300" id="footerLink5">اتصل بنا</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-4" id="footerEduMaterialsTitle">المواد التعليمية</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-blue-300 dark:text-gray-400 hover:text-white transition duration-300" id="eduMaterial1">المرحلة
+                                الابتدائية</a></li>
+                        <li><a href="#" class="text-blue-300 dark:text-gray-400 hover:text-white transition duration-300" id="eduMaterial2">المرحلة
+                                المتوسطة</a></li>
+                        <li><a href="#" class="text-blue-300 dark:text-gray-400 hover:text-white transition duration-300" id="eduMaterial3">المرحلة
+                                الثانوية</a></li>
+                        <li><a href="#" class="text-blue-300 dark:text-gray-400 hover:text-white transition duration-300" id="eduMaterial4">مواد التعليم
+                                العالي</a></li>
+                        <li><a href="#" class="text-blue-300 dark:text-gray-400 hover:text-white transition duration-300" id="eduMaterial5">المواد
+                                التدريبية</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-4" id="footerNewsletterTitle">النشرة البريدية</h3>
+                    <p class="text-blue-300 dark:text-gray-400 mb-4" id="footerNewsletterDesc">اشترك في نشرتنا البريدية لتصلك آخر التحديثات والعروض</p>
+                    <form id="newsletterForm" class="flex">
+                        <input type="email" placeholder="بريدك الإلكتروني" id="newsletterEmailInput"
+                            class="px-4 py-2 rounded-l-lg w-full text-gray-800 dark:bg-gray-700 dark:text-gray-100 focus:outline-none">
+                        <button type="submit" class="bg-blue-600 px-4 py-2 rounded-r-lg hover:bg-blue-700 transition duration-300 m-1">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="border-t border-blue-800 dark:border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-blue-400 dark:text-gray-500 mb-4 md:mb-0" id="footerCopyright">© 2023 مترجم إشارة المناهج التعليمية. جميع الحقوق محفوظة.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-blue-400 dark:text-gray-500 hover:text-white transition duration-300" id="footerTerms">شروط الخدمة</a>
+                    <a href="#" class="text-blue-400 dark:text-gray-500 hover:text-white transition duration-300" id="footerPrivacy">سياسة الخصوصية</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.all.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const mobileMenuButton = document.querySelector('.md\\:hidden');
+            const mobileMenuLinks = document.querySelectorAll('.md\\:flex a');
+            const htmlElement = document.documentElement;
+
+
+            mobileMenuButton.addEventListener('click', function () {
+                const navLinks = document.querySelector('.md\\:flex');
+                navLinks.classList.toggle('hidden');
+                navLinks.classList.toggle('flex');
+                navLinks.classList.toggle('flex-col');
+                navLinks.classList.toggle('absolute');
+                navLinks.classList.toggle('top-16');
+                navLinks.classList.toggle('left-0');
+                navLinks.classList.toggle('right-0');
+                navLinks.classList.toggle('bg-blue-900');
+                navLinks.classList.toggle('p-4');
+                navLinks.classList.toggle('space-y-2');
+            });
+
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', function () {
+                    const navLinks = document.querySelector('.md\\:flex');
+                    navLinks.classList.add('hidden');
+                    navLinks.classList.remove('flex');
+                });
+            });
+
+
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // --- تبديل الوضع الداكن (Dark Mode Toggle) ---
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            const darkModeIcon = document.getElementById('darkModeIcon');
+
+
+            const savedTheme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+
+            const defaultTheme = 'light';
+
+
+            const themeToApply = savedTheme || (systemPrefersDark ? 'dark' : null) || defaultTheme;
+
+            if (themeToApply === 'dark') {
+                document.documentElement.classList.add('dark');
+                darkModeIcon.classList.replace('fa-moon', 'fa-sun');
+            } else {
+                document.documentElement.classList.remove('dark');
+                darkModeIcon.classList.replace('fa-sun', 'fa-moon');
+            }
+
+            // تفعيل تبديل الوضع الداكن/الفاتح
+            darkModeToggle.addEventListener('click', function () {
+                const html = document.documentElement;
+                const isDark = html.classList.contains('dark');
+
+                if (isDark) {
+                    // التحويل للوضع الفاتح
+                    html.classList.remove('dark');
+                    localStorage.setItem('theme', 'light');
+                    darkModeIcon.classList.replace('fa-sun', 'fa-moon');
+                    console.log('تم التبديل للوضع الفاتح');
+                } else {
+                    // التحويل للوضع الداكن
+                    html.classList.add('dark');
+                    localStorage.setItem('theme', 'dark');
+                    darkModeIcon.classList.replace('fa-moon', 'fa-sun');
+                    console.log('تم التبديل للوضع الداكن');
+                }
+            });
+
+
+            const languageToggle = document.getElementById('languageToggle');
+            const currentLangDisplay = document.getElementById('currentLangDisplay');
+
+
+            const translations = {
+                ar: {
+                    pageTitle: "مترجم إشارة المناهج التعليمية",
+                    navHome: "الرئيسية",
+                    navFeatures: "المميزات",
+                    navMethodology: "المنهجية",
+                    navContact: "اتصل بنا",
+                    heroTitle: "ترجمة المناهج الدراسية بلغة الإشارة",
+                    heroSubtitle: "نقدم حلولاً شاملة لترجمة المناهج التعليمية بلغة الإشارة بجودة عالية ودقة علمية",
+                    heroButton1: "تجربة النظام",
+                    heroButton2: "تعرف أكثر",
+                    stat1Text: "درس مكتوب تمت ترجمته",
+                    stat2Text: "مدرس لغة إشارة معتمد",
+                    stat3Text: "رضا أولياء الأمور",
+                    featuresTitle: "مميزات منصتنا",
+                    feature1Title: "مناهج تعليمية متكاملة",
+                    feature1Desc: "ترجمة شاملة لجميع المناهج الدراسية المقررة باحترافية عالية ودقة علمية",
+                    feature2Title: "مترجمون معتمدون",
+                    feature2Desc: "فريق من المترجمين المؤهلين والمدربين على أعلى المستويات",
+                    feature3Title: "جودة عالية الفيديو",
+                    feature3Desc: "إنتاج مرئي بدقة عالية مع إضاءة وتصوير مميزين للحركات اللغوية",
+                    feature4Title: "تخصيص المحتوى",
+                    feature4Desc: "إمكانية طلب ترجمة مواد إضافية حسب احتياجات المدرسة أو الطالب",
+                    feature5Title: "منصة إلكترونية متكاملة",
+                    feature5Desc: "نظام إدارة التعلم يتيح الوصول للمحتوى المترجم في أي وقت ومن أي مكان",
+                    feature6Title: "دعم فني مستمر",
+                    feature6Desc: "فريق دعم فني يعمل على مدار الساعة للإجابة عن الاستفسارات",
+                    demoTitle: "شاهد كيف تعمل المنصة",
+                    demoSubtitle: "نظام متكامل يقدم تجربة تعليمية غنية بلغة الإشارة للمناهج الدراسية المختلفة",
+                    demoListItem1: "اختيار المنهج الدراسي المطلوب",
+                    demoListItem2: "تصفح الدروس المترجمة بلغة الإشارة",
+                    demoListItem3: "إمكانية إعادة مشاهدة أي جزء من الدرس",
+                    demoListItem4: "تمارين تفاعلية لاختبار الفهم",
+                    demoButton: "ابدأ التجربة المجانية",
+                    videoNotSupported: "المتصفح لا يدعم عرض الفيديو.",
+                    methodologyTitle: "منهجية الترجمة والتدقيق",
+                    method1Title: "مرحلة التحليل",
+                    method1Desc: "تحليل المنهج الدراسي وتحديد المفاهيم الأساسية والمصطلحات التقنية",
+                    method2Title: "مرحلة الترجمة الأولية",
+                    method2Desc: "ترجمة المحتوى إلى لغة الإشارة مع مراعاة الدقة العلمية والتربوية",
+                    method3Title: "مرحلة التدقيق اللغوي",
+                    method3Desc: "تدقيق الترجمة من قبل متخصصين في لغة الإشارة والمنهج التعليمي",
+                    method4Title: "مرحلة الإنتاج",
+                    method4Desc: "تصوير الدروس بجودة عالية في استوديوهات متخصصة",
+                    method5Title: "مرحلة النشر والتقييم",
+                    method5Desc: "رفع المحتوى على المنصة وجمع التغذية الراجعة والتحسين المستمر",
+                    teamTitle: "فريقنا المتميز",
+                    teamMember1Name: "المبرمجة/حبيبة مجدي",
+                    teamMember1Role: "ليدر فريق العمل",
+                    teamMember1Desc: "درست في مدرسة We للتكنولوجيا التطبيقية (بقنا)",
+                    teamMember2Name: "المبرمجة/رحمة محمد",
+                    teamMember2Role: "مطور واجهات مستخدم",
+                    teamMember2Desc: "درست في مدرسة We للتكنولوجيا التطبيقية (بقنا)",
+                    teamMember3Name: "المبرمجة/شروق قرشي",
+                    teamMember3Role: "مطور واجهات المستخدم",
+                    teamMember3Desc: "درست في مدرسة We للتكنولوجيا التطبيقية (بقنا)",
+                    teamMember4Name: "المبرمجة/روان بيومي",
+                    teamMember4Role: "مطور واجهات مستخدم",
+                    teamMember4Desc: "درست في مدرسة We للتكنولوجيا التطبيقية (بقنا)",
+                    teamMember5Name: "المبرمج/عبدالرحمن احمد",
+                    teamMember5Role: "مطور واجهات مستخدم",
+                    teamMember5Desc: "درس في مدرسة We للتكنولوجيا التطبيقية (بقنا)",
+                    contactTitle: "تواصل معنا",
+                    contactSubtitle: "نحن هنا لمساعدتك في أي استفسار حول خدمات ترجمة المناهج بلغة الإشارة",
+                    addressTitle: "العنوان",
+                    addressText: "الرياض، المملكة العربية السعودية",
+                    phoneTitle: "الهاتف",
+                    phoneText: "+966 12 345 6789",
+                    emailTitle: "البريد الإلكتروني",
+                    emailText: "info@sign-translate.edu",
+                    followUsTitle: "تابعنا على",
+                    formNameLabel: "الاسم الكامل",
+                    formEmailLabel: "البريد الإلكتروني",
+                    formSubjectLabel: "الموضوع",
+                    subjectOption1: "استفسار عام",
+                    subjectOption2: "طلب خدمة ترجمة",
+                    subjectOption3: "دعم فني",
+                    subjectOption4: "مقترحات",
+                    formMessageLabel: "الرسالة",
+                    formSubmitButton: "إرسال الرسالة",
+                    footerDesc: "منصة رائدة في مجال ترجمة المناهج التعليمية بلغة الإشارة لتوفير تعليم متكافئ للصم وضعاف السمع",
+                    footerQuickLinksTitle: "روابط سريعة",
+                    footerLink1: "الرئيسية",
+                    footerLink2: "عن المنصة",
+                    footerLink3: "الأسعار",
+                    footerLink4: "المدونة",
+                    footerLink5: "اتصل بنا",
+                    footerEduMaterialsTitle: "المواد التعليمية",
+                    eduMaterial1: "المرحلة الابتدائية",
+                    eduMaterial2: "المرحلة المتوسطة",
+                    eduMaterial3: "المرحلة الثانوية",
+                    eduMaterial4: "مواد التعليم العالي",
+                    eduMaterial5: "المواد التدريبية",
+                    footerNewsletterTitle: "النشرة البريدية",
+                    footerNewsletterDesc: "اشترك في نشرتنا البريدية لتصلك آخر التحديثات والعروض",
+                    newsletterEmailInputPlaceholder: "بريدك الإلكتروني",
+                    footerCopyright: "© 2023 مترجم إشارة المناهج التعليمية. جميع الحقوق محفوظة.",
+                    footerTerms: "شروط الخدمة",
+                    footerPrivacy: "سياسة الخصوصية"
+                },
+                en: {
+                    pageTitle: "Educational Curricula Sign Language Translator",
+                    navHome: "Home",
+                    navFeatures: "Features",
+                    navMethodology: "Methodology",
+                    navContact: "Contact Us",
+                    heroTitle: "Translating Educational Curricula into Sign Language",
+                    heroSubtitle: "We provide comprehensive solutions for translating educational curricula into sign language with high quality and scientific accuracy.",
+                    heroButton1: "Try the System",
+                    heroButton2: "Learn More",
+                    stat1Text: "Written lessons translated",
+                    stat2Text: "Certified sign language instructors",
+                    stat3Text: "Parent satisfaction",
+                    featuresTitle: "Our Platform Features",
+                    feature1Title: "Integrated Educational Curricula",
+                    feature1Desc: "Comprehensive translation of all prescribed curricula with high professionalism and scientific accuracy.",
+                    feature2Title: "Certified Translators",
+                    feature2Desc: "A team of qualified and highly trained translators.",
+                    feature3Title: "High-Quality Video",
+                    feature3Desc: "High-definition visual production with excellent lighting and filming for linguistic movements.",
+                    feature4Title: "Content Customization",
+                    feature4Desc: "Possibility to request translation of additional materials according to school or student needs.",
+                    feature5Title: "Integrated Electronic Platform",
+                    feature5Desc: "A learning management system that allows access to translated content anytime, anywhere.",
+                    feature6Title: "Continuous Technical Support",
+                    feature6Desc: "A technical support team available around the clock to answer inquiries.",
+                    demoTitle: "See How the Platform Works",
+                    demoSubtitle: "An integrated system that provides a rich educational experience in sign language for various curricula.",
+                    demoListItem1: "Select the required curriculum",
+                    demoListItem2: "Browse lessons translated into sign language",
+                    demoListItem3: "Ability to re-watch any part of the lesson",
+                    demoListItem4: "Interactive exercises to test understanding",
+                    demoButton: "Start Free Trial",
+                    videoNotSupported: "Your browser does not support the video tag.",
+                    methodologyTitle: "Translation and Auditing Methodology",
+                    method1Title: "Analysis Phase",
+                    method1Desc: "Analyzing the curriculum and identifying key concepts and technical terms.",
+                    method2Title: "Initial Translation Phase",
+                    method2Desc: "Translating content into sign language, considering scientific and educational accuracy.",
+                    method3Title: "Linguistic Auditing Phase",
+                    method3Desc: "Auditing the translation by sign language and educational curriculum specialists.",
+                    method4Title: "Production Phase",
+                    method4Desc: "Filming lessons in high quality in specialized studios.",
+                    method5Title: "Publishing and Evaluation Phase",
+                    method5Desc: "Uploading content to the platform, collecting feedback, and continuous improvement.",
+                    teamTitle: "Our Distinguished Team",
+                    teamMember1Name: "Programmer/Habiba Magdy",
+                    teamMember1Role: "Team Leader",
+                    teamMember1Desc: "Studied at We Applied Technology School (Qena)",
+                    teamMember2Name: "Programmer/Rahma Mohamed",
+                    teamMember2Role: "User Interface Developer",
+                    teamMember2Desc: "Studied at We Applied Technology School (Qena)",
+                    teamMember3Name: "Programmer/Shorouk Quraishi",
+                    teamMember3Role: "User Interface Developer",
+                    teamMember3Desc: "Studied at We Applied Technology School (Qena)",
+                    teamMember4Name: "Programmer/Rawan Bayoumy",
+                    teamMember4Role: "User Interface Developer",
+                    teamMember4Desc: "Studied at We Applied Technology School (Qena)",
+                    teamMember5Name: "Programmer/Abdelrahman Ahmed",
+                    teamMember5Role: "User Interface Developer",
+                    teamMember5Desc: "Studied at We Applied Technology School (Qena)",
+                    contactTitle: "Contact Us",
+                    contactSubtitle: "We are here to assist you with any inquiries about sign language curriculum translation services.",
+                    addressTitle: "Address",
+                    addressText: "Riyadh, Saudi Arabia",
+                    phoneTitle: "Phone",
+                    phoneText: "+966 12 345 6789",
+                    emailTitle: "Email",
+                    emailText: "info@sign-translate.edu",
+                    followUsTitle: "Follow Us On",
+                    formNameLabel: "Full Name",
+                    formEmailLabel: "Email Address",
+                    formSubjectLabel: "Subject",
+                    subjectOption1: "General Inquiry",
+                    subjectOption2: "Translation Service Request",
+                    subjectOption3: "Technical Support",
+                    subjectOption4: "Suggestions",
+                    formMessageLabel: "Message",
+                    formSubmitButton: "Send Message",
+                    footerDesc: "A leading platform in sign language educational curricula translation to provide equitable education for the deaf and hard of hearing.",
+                    footerQuickLinksTitle: "Quick Links",
+                    footerLink1: "Home",
+                    footerLink2: "About Platform",
+                    footerLink3: "Pricing",
+                    footerLink4: "Blog",
+                    footerLink5: "Contact Us",
+                    footerEduMaterialsTitle: "Educational Materials",
+                    eduMaterial1: "Primary Stage",
+                    eduMaterial2: "Intermediate Stage",
+                    eduMaterial3: "Secondary Stage",
+                    eduMaterial4: "Higher Education Materials",
+                    eduMaterial5: "Training Materials",
+                    footerNewsletterTitle: "Newsletter",
+                    footerNewsletterDesc: "Subscribe to our newsletter for the latest updates and offers.",
+                    newsletterEmailInputPlaceholder: "Your Email",
+                    footerCopyright: "© 2023 Educational Curricula Sign Language Translator. All Rights Reserved.",
+                    footerTerms: "Terms of Service",
+                    footerPrivacy: "Privacy Policy"
+                }
+            };
+
+            let currentLanguage = htmlElement.lang;
+
+            function updateContent(lang) {
+                const texts = translations[lang];
+                if (!texts) return;
+
+
+                document.getElementById('pageTitle').textContent = texts.pageTitle;
+
+                // تحديث روابط التنقل
+                document.getElementById('navHome').textContent = texts.navHome;
+                document.getElementById('navFeatures').textContent = texts.navFeatures;
+                document.getElementById('navMethodology').textContent = texts.navMethodology;
+                document.getElementById('navContact').textContent = texts.navContact;
+
+                // قسم الهيرو
+                document.getElementById('heroTitle').textContent = texts.heroTitle;
+                document.getElementById('heroSubtitle').textContent = texts.heroSubtitle;
+                document.getElementById('heroButton1').textContent = texts.heroButton1;
+                document.getElementById('heroButton2').textContent = texts.heroButton2;
+
+                // قسم الإحصائيات
+                document.getElementById('stat1Text').textContent = texts.stat1Text;
+                document.getElementById('stat2Text').textContent = texts.stat2Text;
+                document.getElementById('stat3Text').textContent = texts.stat3Text;
+
+                // قسم المميزات
+                document.getElementById('featuresTitle').textContent = texts.featuresTitle;
+                document.getElementById('feature1Title').textContent = texts.feature1Title;
+                document.getElementById('feature1Desc').textContent = texts.feature1Desc;
+                document.getElementById('feature2Title').textContent = texts.feature2Title;
+                document.getElementById('feature2Desc').textContent = texts.feature2Desc;
+                document.getElementById('feature3Title').textContent = texts.feature3Title;
+                document.getElementById('feature3Desc').textContent = texts.feature3Desc;
+                document.getElementById('feature4Title').textContent = texts.feature4Title;
+                document.getElementById('feature4Desc').textContent = texts.feature4Desc;
+                document.getElementById('feature5Title').textContent = texts.feature5Title;
+                document.getElementById('feature5Desc').textContent = texts.feature5Desc;
+                document.getElementById('feature6Title').textContent = texts.feature6Title;
+                document.getElementById('feature6Desc').textContent = texts.feature6Desc;
+
+                // قسم العرض التوضيحي
+                document.getElementById('demoTitle').textContent = texts.demoTitle;
+                document.getElementById('demoSubtitle').textContent = texts.demoSubtitle;
+                document.getElementById('demoListItem1').textContent = texts.demoListItem1;
+                document.getElementById('demoListItem2').textContent = texts.demoListItem2;
+                document.getElementById('demoListItem3').textContent = texts.demoListItem3;
+                document.getElementById('demoListItem4').textContent = texts.demoListItem4;
+                document.getElementById('demoButton').textContent = texts.demoButton;
+                document.getElementById('videoNotSupported').textContent = texts.videoNotSupported;
+
+
+                // قسم المنهجية
+                document.getElementById('methodologyTitle').textContent = texts.methodologyTitle;
+                document.getElementById('method1Title').textContent = texts.method1Title;
+                document.getElementById('method1Desc').textContent = texts.method1Desc;
+                document.getElementById('method2Title').textContent = texts.method2Title;
+                document.getElementById('method2Desc').textContent = texts.method2Desc;
+                document.getElementById('method3Title').textContent = texts.method3Title;
+                document.getElementById('method3Desc').textContent = texts.method3Desc;
+                document.getElementById('method4Title').textContent = texts.method4Title;
+                document.getElementById('method4Desc').textContent = texts.method4Desc;
+                document.getElementById('method5Title').textContent = texts.method5Title;
+                document.getElementById('method5Desc').textContent = texts.method5Desc;
+
+
+                // قسم تواصل معنا
+                document.getElementById('contactTitle').textContent = texts.contactTitle;
+                document.getElementById('contactSubtitle').textContent = texts.contactSubtitle;
+                document.getElementById('addressTitle').textContent = texts.addressTitle;
+                document.getElementById('addressText').textContent = texts.addressText;
+                document.getElementById('phoneTitle').textContent = texts.phoneTitle;
+                document.getElementById('phoneText').textContent = texts.phoneText;
+                document.getElementById('emailTitle').textContent = texts.emailTitle;
+                document.getElementById('emailText').textContent = texts.emailText;
+                document.getElementById('followUsTitle').textContent = texts.followUsTitle;
+                document.getElementById('formNameLabel').textContent = texts.formNameLabel;
+                document.getElementById('formEmailLabel').textContent = texts.formEmailLabel;
+                document.getElementById('formSubjectLabel').textContent = texts.formSubjectLabel;
+                document.getElementById('subjectOption1').textContent = texts.subjectOption1;
+                document.getElementById('subjectOption2').textContent = texts.subjectOption2;
+                document.getElementById('subjectOption3').textContent = texts.subjectOption3;
+                document.getElementById('subjectOption4').textContent = texts.subjectOption4;
+                document.getElementById('formMessageLabel').textContent = texts.formMessageLabel;
+                document.getElementById('formSubmitButton').textContent = texts.formSubmitButton;
+
+                // قسم الفوتر
+                document.getElementById('footerDesc').textContent = texts.footerDesc;
+                document.getElementById('footerQuickLinksTitle').textContent = texts.footerQuickLinksTitle;
+                document.getElementById('footerLink1').textContent = texts.footerLink1;
+                document.getElementById('footerLink2').textContent = texts.footerLink2;
+                document.getElementById('footerLink3').textContent = texts.footerLink3;
+                document.getElementById('footerLink4').textContent = texts.footerLink4;
+                document.getElementById('footerLink5').textContent = texts.footerLink5;
+                document.getElementById('footerEduMaterialsTitle').textContent = texts.footerEduMaterialsTitle;
+                document.getElementById('eduMaterial1').textContent = texts.eduMaterial1;
+                document.getElementById('eduMaterial2').textContent = texts.eduMaterial2;
+                document.getElementById('eduMaterial3').textContent = texts.eduMaterial3;
+                document.getElementById('eduMaterial4').textContent = texts.eduMaterial4;
+                document.getElementById('eduMaterial5').textContent = texts.eduMaterial5;
+                document.getElementById('footerNewsletterTitle').textContent = texts.footerNewsletterTitle;
+                document.getElementById('footerNewsletterDesc').textContent = texts.footerNewsletterDesc;
+                document.getElementById('newsletterEmailInput').placeholder = texts.newsletterEmailInputPlaceholder;
+                document.getElementById('footerCopyright').textContent = texts.footerCopyright;
+                document.getElementById('footerTerms').textContent = texts.footerTerms;
+                document.getElementById('footerPrivacy').textContent = texts.footerPrivacy;
+
+
+                htmlElement.lang = lang;
+                htmlElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+
+
+                currentLangDisplay.textContent = (lang === 'ar') ? 'EN' : 'AR';
+            }
+
+
+            updateContent(currentLanguage);
+
+            languageToggle.addEventListener('click', function () {
+                currentLanguage = (currentLanguage === 'ar') ? 'en' : 'ar';
+                updateContent(currentLanguage);
+            });
+
+
+
+            const alertTranslations = {
+                ar: {
+                    contactError: 'الرجاء ملء جميع الحقول المطلوبة',
+                    contactSuccess: 'شكراً لك، سيتم الرد عليك قريباً',
+                    newsletterError: 'الرجاء إدخال بريد إلكتروني صحيح',
+                    newsletterSuccess: 'تم الإشتراك بنجاح! شكراً لك'
+                },
+                en: {
+                    contactError: 'Please fill all required fields',
+                    contactSuccess: 'Thank you, we will contact you soon',
+                    newsletterError: 'Please enter a valid email',
+                    newsletterSuccess: 'Subscribed successfully! Thank you'
+                }
+            };
+
+
+            document.getElementById('contactForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const message = document.getElementById('message').value.trim();
+
+                if (!name || !email || !message) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: currentLanguage === 'ar' ? 'خطأ' : 'Error',
+                        text: alertTranslations[currentLanguage].contactError,
+                        confirmButtonText: currentLanguage === 'ar' ? 'حسناً' : 'OK'
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'success',
+                        title: currentLanguage === 'ar' ? 'تم الإرسال' : 'Success',
+                        text: alertTranslations[currentLanguage].contactSuccess,
+                        confirmButtonText: currentLanguage === 'ar' ? 'موافق' : 'OK'
+                    }).then(() => {
+                        this.reset();
+                    });
+                }
+            });
+
+
+            document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = document.getElementById('newsletterEmailInput').value.trim();
+
+                if (!email || !email.includes('@')) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: currentLanguage === 'ar' ? 'خطأ' : 'Error',
+                        text: alertTranslations[currentLanguage].newsletterError,
+                        confirmButtonText: currentLanguage === 'ar' ? 'حسناً' : 'OK'
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'success',
+                        title: currentLanguage === 'ar' ? 'تم الإشتراك' : 'Subscribed',
+                        text: alertTranslations[currentLanguage].newsletterSuccess,
+                        confirmButtonText: currentLanguage === 'ar' ? 'حسناً' : 'OK'
+                    }).then(() => {
+                        this.reset();
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
