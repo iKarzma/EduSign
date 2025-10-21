@@ -72,14 +72,16 @@
             <div class="flex flex-col md:flex-row justify-center gap-4">
                 <button
                     class="bg-white text-blue-900 font-bold py-3 px-8 rounded-full hover:bg-gray-100 transition duration-300 dark:bg-blue-700 dark:text-white dark:hover:bg-blue-600"
-                    id="heroButton1">
+                    id="To">
                     تجربة النظام
                 </button>
                 <button
                     class="border-2 border-white text-white font-bold py-3 px-8 rounded-full hover:bg-white hover:text-blue-900 transition duration-300 dark:hover:bg-blue-700 dark:hover:text-white"
-                    id="heroButton2">
+                    >
                     تعرف أكثر
                 </button>
+
+
             </div>
         </div>
     </section>
@@ -390,7 +392,7 @@
                     </div>
                 </div>
 
-                <div class="md:w-1/2">
+                <div class="md:w-1/2 " id="Scrool">
                     <form id="contactForm"
                         class="bg-white dark:bg-gray-800 rounded-lg shadow-xl p-8 text-gray-800 dark:text-gray-100">
                         <div class="mb-6">
@@ -430,6 +432,22 @@
                         </button>
                     </form>
                 </div>
+                <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                        // الزر الأول: ينزل إلى السكشن
+                        const scrollToForm = document.getElementById("To");
+                        scrollToForm.addEventListener("click", () => {
+                            const target = document.getElementById("Scrool"); // غيّرها للـ id اللي عايز تروح له
+                            if (target) {
+                                target.scrollIntoView({ behavior: "smooth" });
+                            }
+
+
+                        });
+
+
+                    });
+                </script>
             </div>
         </div>
     </section>
@@ -508,6 +526,7 @@
                         </button>
                     </form>
                     <script>
+
                         document.addEventListener('DOMContentLoaded', () => {
                             const form = document.getElementById('contactForm');
                             const submitButton = document.getElementById('formSubmitButton');
