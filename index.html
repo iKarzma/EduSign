@@ -72,15 +72,15 @@
             <div class="flex flex-col md:flex-row justify-center gap-4">
                 <button
                     class="bg-white text-blue-900 font-bold py-3 px-8 rounded-full hover:bg-gray-100 transition duration-300 dark:bg-blue-700 dark:text-white dark:hover:bg-blue-600"
-                    id="To">
+                    onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });">
                     تجربة النظام
-                </button>
-                <button
-                    class="border-2 border-white text-white font-bold py-3 px-8 rounded-full hover:bg-white hover:text-blue-900 transition duration-300 dark:hover:bg-blue-700 dark:hover:text-white"
-                    >
-                    تعرف أكثر
-                </button>
+                    </button>
 
+                    <button
+                        class="border-2 border-white text-white font-bold py-3 px-8 rounded-full hover:bg-white hover:text-blue-900 transition duration-300 dark:hover:bg-blue-700 dark:hover:text-white"
+                        onclick="document.getElementById('features').scrollIntoView({ behavior: 'smooth' });">
+                        تعرف أكثر
+                    </button>
 
             </div>
         </div>
@@ -392,7 +392,7 @@
                     </div>
                 </div>
 
-                <div class="md:w-1/2 " id="Scrool">
+                <div class="md:w-1/2">
                     <form id="contactForm"
                         class="bg-white dark:bg-gray-800 rounded-lg shadow-xl p-8 text-gray-800 dark:text-gray-100">
                         <div class="mb-6">
@@ -432,22 +432,6 @@
                         </button>
                     </form>
                 </div>
-                <script>
-                    document.addEventListener("DOMContentLoaded", () => {
-                        // الزر الأول: ينزل إلى السكشن
-                        const scrollToForm = document.getElementById("To");
-                        scrollToForm.addEventListener("click", () => {
-                            const target = document.getElementById("Scrool"); // غيّرها للـ id اللي عايز تروح له
-                            if (target) {
-                                target.scrollIntoView({ behavior: "smooth" });
-                            }
-
-
-                        });
-
-
-                    });
-                </script>
             </div>
         </div>
     </section>
@@ -525,70 +509,6 @@
                             <i class="fas fa-paper-plane"></i>
                         </button>
                     </form>
-                    <script>
-
-                        document.addEventListener('DOMContentLoaded', () => {
-                            const form = document.getElementById('contactForm');
-                            const submitButton = document.getElementById('formSubmitButton');
-
-                            // لو المتغيرات العالمية مش موجودة، نضيف قيم افتراضية لتجنب الأخطاء
-                            const safeCurrentLanguage = (typeof currentLanguage !== 'undefined') ? currentLanguage : 'ar';
-                            const safeAlertTranslations = (typeof alertTranslations !== 'undefined') ? alertTranslations : {
-
-                                ar: {
-                                    contactError: 'Please fill in all required fields.',
-                                    contactSuccess: 'Your message has been sent successfully.'
-                                }
-                            };
-
-                            form.addEventListener('submit', function (e) {
-                                e.preventDefault();
-
-                                const name = document.getElementById('name').value.trim();
-                                const email = document.getElementById('email').value.trim();
-                                const message = document.getElementById('message').value.trim();
-                                const subject = document.getElementById('subject').value.trim();
-
-                                // حفظ النص الأصلي للزر
-                                const originalButtonHTML = submitButton.innerHTML;
-
-                                // إظهار السبينر والنص
-                                submitButton.disabled = true;
-                                submitButton.innerHTML = `
-
-
-            ${safeCurrentLanguage === 'ar' ? `
-            <svg aria-hidden="true" class="inline w-5 h-5 mr-2 text-white animate-spin" viewBox="0 0 100 101" fill="none">
-                <path d="M50 0a50 50 0 1 1-35.355 14.645A49.98 49.98 0 0 1 50 0zm0 9a41 41 0 1 0 29.002 11.998A40.97 40.97 0 0 0 50 9z" fill="#fff"/>
-            </svg>` : ''}
-        `;
-
-                                // محاكاة الإرسال لمدة ثانية
-                                setTimeout(() => {
-                                    if (!name || !email || !message || !subject) {
-                                        // استرجاع الزر الأصلي
-                                        submitButton.disabled = false;
-                                        submitButton.innerHTML = originalButtonHTML;
-
-
-                                    } else {
-                                        // نجاح الإرسال
-                                        submitButton.disabled = true;
-                                        submitButton.innerHTML = originalButtonHTML;
-
-                                        Swal.fire({
-                                            icon: 'success',
-                                            title: safeCurrentLanguage === 'ar' ? 'Success' : '',
-                                            text: safeAlertTranslations[safeCurrentLanguage]?.contactSuccess || safeAlertTranslations['ar'].contactSuccess,
-                                            confirmButtonText: safeCurrentLanguage === 'ar' ? 'OK' : 'OK'
-                                        }).then(() => {
-                                            form.reset();
-                                        });
-                                    }
-                                }, 1000);
-                            });
-                        });
-                    </script>
                 </div>
             </div>
 
@@ -1019,6 +939,15 @@
                         title: currentLanguage === 'ar' ? 'خطأ' : 'Error',
                         text: alertTranslations[currentLanguage].contactError,
                         confirmButtonText: currentLanguage === 'ar' ? 'حسناً' : 'OK'
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'success',
+                        title: currentLanguage === 'ar' ? 'تم الإرسال' : 'Success',
+                        text: alertTranslations[currentLanguage].contactSuccess,
+                        confirmButtonText: currentLanguage === 'ar' ? 'موافق' : 'OK'
+                    }).then(() => {
+                        this.reset();
                     });
                 }
             });
